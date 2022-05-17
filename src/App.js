@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Navbar from './Components/Navbar';
+import Forum from './Components/Forum';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Categories from './Components/Categories';
+import Food from './Components/Food';
 
 function App() {
+  const value = 'My Context Value';
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className="App" style={{backgroundColor: 'rgb(211, 211, 211, 0.3)'}}>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Navbar/>
+      <Routes>
+      <Route path="/" element={<Forum/>} />
+      <Route path="/categories" element={<Categories/>} />
+
+      <Route path="/food" element={<Food/>} />
+
+
+      </Routes>
+      </BrowserRouter>
     </div>
+
+
   );
 }
 
